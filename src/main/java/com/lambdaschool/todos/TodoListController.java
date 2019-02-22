@@ -1,5 +1,6 @@
 package com.lambdaschool.todos;
 
+import com.lambdaschool.todos.models.Todo;
 import com.lambdaschool.todos.models.Users;
 import com.lambdaschool.todos.repository.TodoRepository;
 import com.lambdaschool.todos.repository.UsersRepository;
@@ -41,5 +42,11 @@ public class TodoListController
     public List<Users> allUsers()
     {
         return usersrepo.findAll();
+    }
+
+    @GetMapping("/todos")
+    public List<Todo> allTodos()
+    {
+        return todorepo.findAll();
     }
 }
