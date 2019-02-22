@@ -10,11 +10,9 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URISyntaxException;
 import java.util.List;
 
 @Api(value = "Todo List App", description = "ToDo List App for Tracking your To Do List")
@@ -137,4 +135,20 @@ public class TodoListController
     {
         return todorepo.activeTodos();
     }
+
+    //-------------------------------------------------------------------------
+    @PostMapping("/users")
+    public Users newUser(@RequestBody Users user) throws URISyntaxException
+    {
+        return usersrepo.save(user);
+    }
+
+    @PostMapping("/todos")
+    public Todo newTodo(@RequestBody Todo todo) throws URISyntaxException
+    {
+        return todorepo.save(todo);
+    }
+    //-------------------------------------------------------------------------
+
+
 }
