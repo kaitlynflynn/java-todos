@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 @Api(value = "Todo List App", description = "ToDo List App for Tracking your To Do List")
 @RestController
@@ -149,6 +150,40 @@ public class TodoListController
         return todorepo.save(todo);
     }
     //-------------------------------------------------------------------------
+
+    @PutMapping("/users/userid/{userid}")
+    public Users changeUser(@RequestBody Users newUser, @PathVariable int id) throws URISyntaxException
+    {
+        Optional<Users> updateUser = usersrepo.findById(id);
+        if (updateUser.isPresent())
+        {
+            newUser.setUserid(id);
+            usersrepo.save(newUser);
+            return newUser;
+        } else
+        {
+            return null;
+        }
+    }
+
+    @ApiOperation(value = "Updates a todo based on todo ID", response = Todo.class)
+    @PutMapping("/todos/todoid/{todoid}")
+    public Todo changeTodo(@RequestBody Todo newTodo, @PathVariable int id) throws URISyntaxException
+    {
+        Optional<Todo> updateTodo = todorepo.findById(id);
+        if(updateTodo.isPresent())
+        {
+            newTodo.setTodoid(id);
+            todorepo.save(newTodo);
+            return newTodo;
+        } else
+        {
+            return null;
+        }
+    }
+
+    //-------------------------------------------------------------------------
+
 
 
 }
