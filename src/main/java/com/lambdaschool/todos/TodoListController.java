@@ -70,7 +70,7 @@ public class TodoListController
     //-----------------------------------------------------------------
     @ApiOperation(value = "User based off of user id", response = Users.class)
     @GetMapping("/users/userid/{userid}")
-    public Users findUserById(@PathVariable long id)
+    public Users findUserById(@PathVariable int id)
     {
         var foundUser = usersrepo.findById(id);
         if (foundUser.isPresent())
@@ -184,6 +184,32 @@ public class TodoListController
 
     //-------------------------------------------------------------------------
 
+    @DeleteMapping("/users/userid/{userid}")
+    public Users deleteUser(@PathVariable int userid)
+    {
+        var foundUser = usersrepo.findById(userid);
+        if(foundUser.isPresent())
+        {
+            usersrepo.deleteById(userid);
+            return foundUser.get();
+        } else
+        {
+            return null;
+        }
+    }
 
-
+    @ApiOperation(value = "Deletes todo based off its todoID", response = Todo.class)
+    @DeleteMapping("/todos/todoid/{todoid}")
+    public Todo deleteTodo(@PathVariable int todoid)
+    {
+        var foundTodo = todorepo.findById(todoid);
+        if (foundTodo.isPresent())
+        {
+            todorepo.deleteById(todoid);
+            return foundTodo.get();
+        } else
+        {
+            return null;
+        }
+    }
 }

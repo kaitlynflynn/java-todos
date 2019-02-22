@@ -14,7 +14,7 @@ public class Users
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userid;
+    private int userid;
 
     @Column(nullable = false)
     private String username;
@@ -26,12 +26,12 @@ public class Users
 
 //    getters & setters ----------------------------------------
 
-    public long getUserid()
+    public int getUserid()
     {
         return userid;
     }
 
-    public void setUserid(long userid)
+    public void setUserid(int userid)
     {
         this.userid = userid;
     }
