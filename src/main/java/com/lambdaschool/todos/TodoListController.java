@@ -139,7 +139,7 @@ public class TodoListController
     }
     //-------------------------------------------------------------------------
 
-    @PutMapping("/users/userid/{userid}")
+    @PutMapping("/users/userid/{id}")
     public Users changeUser(@RequestBody Users newUser, @PathVariable int id) throws URISyntaxException
     {
         Optional<Users> updateUser = usersrepo.findById(id);
@@ -155,7 +155,7 @@ public class TodoListController
     }
 
     @ApiOperation(value = "Updates a todo based on todo ID", response = Todo.class)
-    @PutMapping("/todos/todoid/{todoid}")
+    @PutMapping("/todos/todoid/{id}")
     public Todo changeTodo(@RequestBody Todo newTodo, @PathVariable int id) throws URISyntaxException
     {
         Optional<Todo> updateTodo = todorepo.findById(id);
@@ -172,13 +172,13 @@ public class TodoListController
 
     //-------------------------------------------------------------------------
 
-    @DeleteMapping("/users/userid/{userid}")
-    public Users deleteUser(@PathVariable int userid)
+    @DeleteMapping("/users/userid/{id}")
+    public Users deleteUser(@PathVariable int id)
     {
-        var foundUser = usersrepo.findById(userid);
+        var foundUser = usersrepo.findById(id);
         if(foundUser.isPresent())
         {
-            usersrepo.deleteById(userid);
+            usersrepo.deleteById(id);
             return foundUser.get();
         } else
         {
