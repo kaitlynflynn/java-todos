@@ -124,11 +124,17 @@ public class TodoListController
         }
     }
 
+    @ApiOperation(value = "Returns List of ToDos with assigned Users", response = Todo.class)
     @GetMapping("/todos/users")
     public List<Object[]> getTodosAndUsers()
     {
         return todorepo.todosWithUser();
     }
 
-
+    @ApiOperation(value = "Returns List of ToDos not yet completed", response = Todo.class)
+    @GetMapping("todos/active")
+    public List<Todo> getActiveTodos()
+    {
+        return todorepo.activeTodos();
+    }
 }
