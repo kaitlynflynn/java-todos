@@ -1,8 +1,6 @@
 package com.lambdaschool.todos.models;
 
-import javax.persistence.Entity;
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
 @Table(name="todo")
@@ -22,9 +20,9 @@ public class Todo
     @Column(nullable = false)
     private String description;
 
-    private Timestamp datestarted;
+    private String datestarted;
 
-    private Boolean completed;
+    private int completed;
 
     @Column(nullable = false)
     private int userid;
@@ -56,22 +54,22 @@ public class Todo
         this.description = description;
     }
 
-    public Timestamp getDatestarted()
+    public String getDatestarted()
     {
         return datestarted;
     }
 
-    public void setDatestarted(Timestamp datestarted)
+    public void setDatestarted(String datestarted)
     {
         this.datestarted = datestarted;
     }
 
-    public Boolean getCompleted()
+    public int getCompleted()
     {
         return completed;
     }
 
-    public void setCompleted(Boolean completed)
+    public void setCompleted(int completed)
     {
         this.completed = completed;
     }

@@ -3,6 +3,10 @@ package com.lambdaschool.todos.models;
 import javax.persistence.Id;
 import javax.persistence.*;
 
+
+@Entity
+@Table(name="users")
+
 //* userid primary key, not null int
 //* username string, not null
 
@@ -10,7 +14,7 @@ public class Users
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userid;
+    private long userid;
 
     @Column(nullable = false)
     private String username;
@@ -22,12 +26,12 @@ public class Users
 
 //    getters & setters ----------------------------------------
 
-    public int getUserid()
+    public long getUserid()
     {
         return userid;
     }
 
-    public void setUserid(int userid)
+    public void setUserid(long userid)
     {
         this.userid = userid;
     }
