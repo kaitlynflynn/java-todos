@@ -69,31 +69,19 @@ public class TodoListController
 
     //-----------------------------------------------------------------
     @ApiOperation(value = "User based off of user id", response = Users.class)
-    @GetMapping("/users/userid/{userid}")
+    @GetMapping("/users/userid/{id}")
     public Users findUserById(@PathVariable int id)
     {
-        var foundUser = usersrepo.findById(id);
-        if (foundUser.isPresent())
-        {
-            return foundUser.get();
-        } else
-        {
-            return null;
-        }
+            var foundUser = usersrepo.findById(id);
+            if (foundUser.isPresent())
+            {
+                return foundUser.get();
+            } else
+            {
+                return null;
+            }
     }
 
-//    @GetMapping("/users/userid/{userid}")
-//    public Users findTodoById(@PathVariable int id)
-//    {
-//        var foundUser = usersrepo.findById(id);
-//        if (foundUser.isPresent())
-//        {
-//            return foundUser.get();
-//        } else
-//        {
-//            return null;
-//        }
-//    }
     //-----------------------------------------------------------------
 
 
